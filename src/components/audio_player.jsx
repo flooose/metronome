@@ -1,10 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import '../css/audio_player.css';
 
 export class AudioPlayer extends React.Component {
+
   componentWillMount(){
     this.interval = null;
   }
+
   componentDidUpdate(){
     let millis, interval;
 
