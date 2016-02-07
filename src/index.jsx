@@ -1,32 +1,31 @@
 import React from 'react';
 import {AudioPlayer} from "./components/audio_player.jsx";
 const BEATS_PER_MINUTE = [null, 30, 40, 50, 60, 70, 80, 90, 100, 120];
+const INITIAL_STATE = {bpm: null};
 
-const blub = function (){
-  let bla = "adfsd";
-}
+export class Metronome extends React.Component {
 
-export var Metronome = React.createClass({
-  handleSpaceBar: function(event){
+  constructor(props){
+    super(props);
+    this.state = INITIAL_STATE;
+  }
+
+  handleSpaceBar(event){
     if(event.keyCode === 32){
       event.preventDefault();
       this.resetInitialState();
     }
-  },
+  }
 
-  componentWillMount: function(){
-    window.addEventListener('keydown', this.handleSpaceBar);
-  },
+  componentWillMount(){
+    window.addEventListener('keydown', this.handleSpaceBar.bind(this));
+  }
 
-  resetInitialState: function(){
-    this.setState(this.getInitialState())
-  },
+  resetInitialState(){
+    this.setState(INITIAL_STATE);
+  }
 
-  getInitialState: function(){
-    return {bpm: null}
-  },
-
-  render: function() {
+  render() {
     return(
       <div>
         <AudioPlayer bpm={this.state.bpm} />
@@ -35,20 +34,17 @@ export var Metronome = React.createClass({
             let beat = bpm ? bpm : "reset";
             return (
               <div>
-                <button value={beat} onClick={this.setMetronome}>{beat}</button>
+                <button value={beat} onClick={this.setMetronome.bind(this)}>{beat}</button>
               </div>
             );
           })}
       </div>
     );
-  },
+  }
 
-  setMetronome: function() {
+  setMetronome() {
     let event = arguments[0];
     let value = isNaN(event.target.value) ? null : parseFloat(event.target.value);
     this.setState({bpm: value});
-
-  },
-});
-
-//React.render(<Metronome/>, document.getElementById('container'));
+  }
+}
