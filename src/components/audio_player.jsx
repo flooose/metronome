@@ -5,20 +5,20 @@ import '../css/audio_player.css';
 export class AudioPlayer extends React.Component {
 
   componentWillMount(){
-    this.interval = null;
+    this.playbackRepeatInterval = null;
   }
 
   componentDidUpdate(){
-    let millis, interval;
+    let millis;
 
     let bpm = this.props.bpm;
     let domNode = ReactDOM.findDOMNode(this);
 
-    clearInterval(this.interval);
+    clearInterval(this.playbackRepeatInterval);
 
     if(bpm){
       millis = Math.round((60/bpm)*1000);
-      this.interval = setInterval(domNode.play.bind(domNode), millis);
+      this.playbackRepeatInterval = setInterval(domNode.play.bind(domNode), millis);
     }
   }
 
