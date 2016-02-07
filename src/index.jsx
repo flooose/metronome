@@ -7,9 +7,25 @@ const blub = function (){
 }
 
 export var Metronome = React.createClass({
+  handleSpaceBar: function(event){
+    if(event.keyCode === 32){
+      event.preventDefault();
+      this.resetInitialState();
+    }
+  },
+
+  componentWillMount: function(){
+    window.addEventListener('keydown', this.handleSpaceBar);
+  },
+
+  resetInitialState: function(){
+    this.setState(this.getInitialState())
+  },
+
   getInitialState: function(){
     return {bpm: null}
   },
+
   render: function() {
     return(
       <div>
@@ -26,6 +42,7 @@ export var Metronome = React.createClass({
       </div>
     );
   },
+
   setMetronome: function() {
     let event = arguments[0];
     let value = isNaN(event.target.value) ? null : parseFloat(event.target.value);
