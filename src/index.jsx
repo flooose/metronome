@@ -1,6 +1,6 @@
 import React from 'react';
 import {AudioPlayer} from "./components/audio_player.jsx";
-const BEATS_PER_MINUTE = [null, 30, 40, 50, 60, 70, 80, 90, 100, 120];
+const BEATS_PER_MINUTE = [null, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200];
 const INITIAL_STATE = {bpm: null};
 
 export class Metronome extends React.Component {
