@@ -1,0 +1,27 @@
+@keyframes circle {
+  /* see http://lea.verou.me/css-4d/#circle-demo-3 */
+  from { transform: rotate(0deg)
+                    translate(-185px)
+                    rotate(0deg);
+  }
+  to {   transform: rotate(360deg)
+                    translate(-185px)
+                    rotate(-360deg);
+  }}
+
+.blub {
+  width: 400px;
+  height: 400px;
+  /* border-radius: 50%; */
+  background-color: gray;
+}
+
+.flupp {
+  width: 30px;
+  height: 30px;
+  border-radius: 25%;
+  background-color: red;
+  transform: translate(185px, 185px) rotate(90deg) infinite;
+  /* animation: circle 2s infinite linear; */
+  /* transform-origin: -185px; */
+}
