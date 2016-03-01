@@ -11,14 +11,13 @@ export class AudioPlayer extends React.Component {
   componentDidUpdate(){
     let millis;
 
-    let bpm = this.props.bpm;
+    let beatInterval = this.props.beatInterval
     let domNode = ReactDOM.findDOMNode(this);
 
     clearInterval(this.playbackRepeatInterval);
 
-    if(bpm){
-      millis = Math.round((60/bpm)*1000);
-      this.playbackRepeatInterval = setInterval(domNode.play.bind(domNode), millis);
+    if(beatInterval){
+      this.playbackRepeatInterval = setInterval(domNode.play.bind(domNode), beatInterval);
     }
   }
 

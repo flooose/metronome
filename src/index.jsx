@@ -27,9 +27,15 @@ export class Metronome extends React.Component {
   }
 
   render() {
+    let bpm = this.state.bpm;
+    let beatInterval = null;
+    if(bpm){
+       beatInterval = Math.round((60/bpm)*1000);
+    }
+
     return(
       <div>
-        <AudioPlayer bpm={this.state.bpm} />
+        <AudioPlayer beatInterval={beatInterval} />
         {BEATS_PER_MINUTE.map( bpm =>
           {
             let beat = bpm ? bpm : "reset";
